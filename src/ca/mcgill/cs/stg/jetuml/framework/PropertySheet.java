@@ -167,7 +167,9 @@ public class PropertySheet extends JPanel
 			}
 
 			Object value = getter.invoke(pBean, new Object[] {});
+			
 			editor.setValue(value);
+			
 			editor.addPropertyChangeListener(new PropertyChangeListener()
 			{
 				public void propertyChange(PropertyChangeEvent pEvent)
@@ -182,7 +184,9 @@ public class PropertySheet extends JPanel
 						exception.printStackTrace();
 					}
 				}
+			
 			});
+			
 			return editor;
 		}
 		catch(InstantiationException | IllegalAccessException | InvocationTargetException exception)
@@ -226,6 +230,7 @@ public class PropertySheet extends JPanel
 		else 
 		{
 			final JTextField textField = new JTextField(text, 10);
+		
 			textField.getDocument().addDocumentListener(new DocumentListener()
             	{
 					public void insertUpdate(DocumentEvent pEvent) 
