@@ -49,12 +49,19 @@ public class GraphFrame extends JInternalFrame
 	public GraphFrame(Graph pGraph, JTabbedPane pTabbedPane)
 	{
 		aTabbedPane = pTabbedPane;
-		ToolBar sideBar = new ToolBar(pGraph);
-		aPanel = new GraphPanel(pGraph, sideBar);
+		ToolBar optionsBar = new ToolBar(pGraph);
+		
+		aPanel = new GraphPanel(pGraph, optionsBar);
 		Container contentPane = getContentPane();
-		contentPane.add(sideBar, BorderLayout.EAST);
+		contentPane.add(optionsBar, BorderLayout.EAST);
 		contentPane.add(new JScrollPane(aPanel), BorderLayout.CENTER);
 		setComponentPopupMenu( null ); // Removes the system pop-up menu full of disabled buttons.
+		
+		ToolBar descriptionBar = new ToolBar(pGraph);
+		
+		GraphPanel descriptionPanel = new GraphPanel(pGraph, optionsBar);
+		contentPane.add(descriptionBar, BorderLayout.WEST);
+		contentPane.add(descriptionPanel);
 	}
 
 	/**
