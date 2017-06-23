@@ -142,7 +142,7 @@ class MenuFactory
 		{
 			if(aSystem.indexOf("mac") >= 0)
 			{
-				menu.setAccelerator(KeyStroke.getKeyStroke(aBundle.getString(pPrefix + ".accelerator.mac")));	
+				menu.setAccelerator(KeyStroke.getKeyStroke(aBundle.getString(pPrefix + ".accelerator.mac")));
 			}
 			else
 			{

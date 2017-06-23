@@ -104,7 +104,7 @@ public class EditorFrame extends JFrame
 	private ResourceBundle aAppResources;
 	private ResourceBundle aVersionResources;
 	private ResourceBundle aEditorResources;
-	private JTabbedPane aTabbedPane;
+	JTabbedPane aTabbedPane;
 	private ArrayList<JInternalFrame> aTabs = new ArrayList<>();
 	private JMenu aNewMenu;
 	private Clipboard aClipboard = new Clipboard();
@@ -307,29 +307,9 @@ public class EditorFrame extends JFrame
      	aDiagramRelevantMenus.add(viewMenu);
      	viewMenu.setEnabled(!noCurrentGraphFrame());
 
-     	viewMenu.add(pFactory.createMenuItem("view.zoom_out", new ActionListener()
-     	{
-     		public void actionPerformed(ActionEvent pEvent)
-     		{
-     			if( noCurrentGraphFrame() )
-     			{
-     				return;
-     			}
-     			((GraphFrame) aTabbedPane.getSelectedComponent()).getGraphPanel().changeZoom(-1);
-     		}
-         }));
+     	viewMenu.add(pFactory.createMenuItem("view.zoom_out", new ActionZoomOut(this)));
 
-     	viewMenu.add(pFactory.createMenuItem("view.zoom_in", new ActionListener()
-     	{
-            public void actionPerformed(ActionEvent pEvent)
-            {
-            	if( noCurrentGraphFrame() )
-            	{
-            		return;
-            	}
-            	((GraphFrame) aTabbedPane.getSelectedComponent()).getGraphPanel().changeZoom(1);
-            }
-     	}));
+     	viewMenu.add(pFactory.createMenuItem("view.zoom_in", new ActionZoomIn(this)));
       
      	final JCheckBoxMenuItem hideGridItem  = (JCheckBoxMenuItem) pFactory.createCheckBoxMenuItem("view.hide_grid", new ActionListener()
      	{
@@ -819,7 +799,7 @@ public class EditorFrame extends JFrame
    				aEditorResources.getString("dialog.to_clipboard.title"), JOptionPane.INFORMATION_MESSAGE);
    	}
    	
-   	private boolean noCurrentGraphFrame()
+   	boolean noCurrentGraphFrame()
    	{
    		return aTabbedPane.getSelectedComponent() == null || !(aTabbedPane.getSelectedComponent() instanceof GraphFrame);
    	}
