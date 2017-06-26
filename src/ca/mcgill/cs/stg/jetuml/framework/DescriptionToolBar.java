@@ -39,5 +39,17 @@ public class DescriptionToolBar extends JPanel {
 		return instance;
 	}
 	
+	public static void udpateDescription() {
+		
+	}
+	
+	public static void hideDescription() {
+		
+	}
+	
+	public static void clearDescription() {
+		
+	}
+	
 	
 }
