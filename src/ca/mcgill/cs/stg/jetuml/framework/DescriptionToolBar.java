@@ -1,8 +1,10 @@
 package ca.mcgill.cs.stg.jetuml.framework;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.LayoutManager;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class DescriptionToolBar extends JPanel {
@@ -17,10 +19,13 @@ public class DescriptionToolBar extends JPanel {
 		super();
 		
 		descriptionPanel = new JPanel();
-		descriptionPanel.setLayout(new VerticalLayout());
-		descriptionPanel.setLocation(0, 0);
-		descriptionPanel.setBounds(0, 0, WIDTH, 20);
+		descriptionPanel.setLocation(SPACING, SPACING);
 		
+		JLabel lbl = new JLabel();
+		
+		lbl.setText("Description");
+		lbl.setFont(new Font(lbl.getFont().getFontName(), lbl.getFont().getStyle(), FONT_SIZE));
+		descriptionPanel.add(lbl);
 		
 	}
 	
@@ -29,7 +34,7 @@ public class DescriptionToolBar extends JPanel {
 			instance = new DescriptionToolBar();
 			
 			instance.setLayout(new BorderLayout());
-			instance.add(descriptionPanel, BorderLayout.CENTER);
+			instance.add(descriptionPanel, BorderLayout.NORTH);
 		}
 		return instance;
 	}
