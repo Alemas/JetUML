@@ -108,6 +108,9 @@ public class GraphPanel extends JPanel
 	 */
 	public void editSelected()
 	{
+		
+		DescriptionToolBar.hideDescription();
+		
 		GraphElement edited = aSelectedElements.getLastSelected();
 		if( edited == null )
 		{

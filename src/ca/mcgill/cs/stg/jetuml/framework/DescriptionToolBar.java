@@ -7,6 +7,9 @@ import java.awt.LayoutManager;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ca.mcgill.cs.stg.jetuml.graph.GraphElement;
+import ca.mcgill.cs.stg.jetuml.graph.Node;
+
 public class DescriptionToolBar extends JPanel {
 
 	private static DescriptionToolBar instance = null;
@@ -23,7 +26,7 @@ public class DescriptionToolBar extends JPanel {
 		
 		JLabel lbl = new JLabel();
 		
-		lbl.setText("Description");
+		lbl.setText("Description:");
 		lbl.setFont(new Font(lbl.getFont().getFontName(), lbl.getFont().getStyle(), FONT_SIZE));
 		descriptionPanel.add(lbl);
 		
@@ -39,12 +42,16 @@ public class DescriptionToolBar extends JPanel {
 		return instance;
 	}
 	
-	public static void udpateDescription() {
+	public static void udpateDescription(GraphElement element) {
 		
 	}
 	
 	public static void hideDescription() {
+		if (instance == null) {
+			return;
+		}
 		
+		instance.hide();;
 	}
 	
 	public static void clearDescription() {
