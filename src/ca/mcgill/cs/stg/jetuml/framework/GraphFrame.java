@@ -54,8 +54,7 @@ public class GraphFrame extends JInternalFrame
 		
 		DescriptionToolBar descriptionBar = DescriptionToolBar.getInstance();
 		
-		contentPane.add(descriptionBar, BorderLayout.WEST);
-		contentPane.add(descriptionBar);
+		contentPane.add(descriptionBar, BorderLayout.WEST);		
 		//----------
 		
 		aTabbedPane = pTabbedPane;
