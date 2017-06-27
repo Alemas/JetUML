@@ -74,7 +74,7 @@ public class PropertySheet extends JPanel
 	private static Map<Class<?>, Class<?>> editors;
 	private static ResourceBundle aPropertyNames = ResourceBundle.getBundle("ca.mcgill.cs.stg.jetuml.graph.GraphElementProperties");
 
-	private ArrayList<ChangeListener> aChangeListeners = new ArrayList<>();
+	private static ArrayList<ChangeListener> aChangeListeners = new ArrayList<>();
 	
 	static
 	{  
@@ -117,7 +117,8 @@ public class PropertySheet extends JPanel
 				if(editor != null && !propertyName.equals(INVISIBLE_PROPERTY_MARKER))
 				{
 					add(new JLabel(propertyName));
-//					add(getEditorComponent(editor));
+					add(getEditorComponent(editor));
+					System.out.println(editor.getAsText());
 				}
 			}		
 		}
@@ -126,7 +127,32 @@ public class PropertySheet extends JPanel
 			// Do nothing
 		}
 	}
-
+	
+	public static HashMap<String,String> getValidAttributes (final Object pBean) {
+		HashMap<String,String> r = new HashMap<String, String>();
+		
+		try
+		{
+			PropertyDescriptor[] descriptors = Introspector.getBeanInfo(pBean.getClass()).getPropertyDescriptors().clone();
+			
+			for(PropertyDescriptor descriptor : descriptors)
+			{
+				PropertyEditor editor = getEditor(pBean, descriptor);
+				String propertyName = getPropertyName(pBean.getClass(), descriptor.getName());
+				if(editor != null && !propertyName.equals(INVISIBLE_PROPERTY_MARKER))
+				{
+					r.put(propertyName, editor.getAsText());
+				}
+			}		
+		}
+		catch (IntrospectionException exception)
+		{
+			// Do nothing
+		}
+		
+		return r;
+	}
+	
 	/**
      * Gets the property editor for a given property,
      * and wires it so that it updates the given object.
@@ -135,7 +161,8 @@ public class PropertySheet extends JPanel
      * @return a property editor that edits the property
      *  with the given descriptor and updates the given object
 	 */
-	public PropertyEditor getEditor(final Object pBean, PropertyDescriptor pDescriptor)
+	
+	public static PropertyEditor getEditor(final Object pBean, PropertyDescriptor pDescriptor)
 	{
 		try
 		{
@@ -261,7 +288,7 @@ public class PropertySheet extends JPanel
      * Notifies all listeners of a state change.
      * @param pEvent the event to propagate
 	 */
-	private void fireStateChanged(ChangeEvent pEvent)
+	private static void fireStateChanged(ChangeEvent pEvent)
 	{
 		for(ChangeListener listener : aChangeListeners)
 		{

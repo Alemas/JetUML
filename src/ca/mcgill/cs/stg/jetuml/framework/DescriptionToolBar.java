@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.LayoutManager;
+import java.util.HashMap;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -93,7 +94,12 @@ public class DescriptionToolBar extends JPanel {
 	}
 	
 	public static void updateDescription(GraphElement element) {
-		textPaneAttributes.setText(element.toString());
+		
+		HashMap<String, String> description = PropertySheet.getValidAttributes(element); 
+		System.out.println(description.toString());
+		textPaneName.setText(description.get("Name"));
+		textPaneAttributes.setText(description.get("Attributes"));
+		textPaneMethods.setText(description.get("Methods"));
 		setEditableTextPanes(true);
 	}
 	
