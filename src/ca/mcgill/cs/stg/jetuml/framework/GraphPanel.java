@@ -168,6 +168,9 @@ public class GraphPanel extends JPanel
 			setModified(true);
 		}
 		repaint();
+		//----------
+		DescriptionToolBar.clearDescription();
+		//----------
 	}
 	
 	/**
