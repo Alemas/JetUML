@@ -549,6 +549,7 @@ public class GraphPanel extends JPanel
 		
 		private void handleSelection(MouseEvent pEvent)
 		{
+			requestFocusInWindow();
 			GraphElement element = getSelectedElement(pEvent);
 			if(element != null) // Something is selected
 			{
