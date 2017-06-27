@@ -42,7 +42,7 @@ public class DescriptionToolBar extends JPanel {
 		
 		addLabel("Name:");
 		addVerticalSpacing(SPACING);
-		addTextPane(textPaneName, new Dimension(200, 25));
+		addTextPane(textPaneName, new Dimension(200, 50));
 		addVerticalSpacing(SPACING);
 		
 		addLabel("Attributes:");
@@ -97,6 +97,13 @@ public class DescriptionToolBar extends JPanel {
 		
 		HashMap<String, String> description = PropertySheet.getValidAttributes(element); 
 		System.out.println(description.toString());
+		
+		description.put("Name", description.get("Name").replace("|", "\n"));
+		description.put("Attributes", description.get("Attributes").replace("|", "\n"));
+		description.put("Methods", description.get("Methods").replace("|", "\n"));
+		
+		System.out.println(description.toString());
+		
 		textPaneName.setText(description.get("Name"));
 		textPaneAttributes.setText(description.get("Attributes"));
 		textPaneMethods.setText(description.get("Methods"));

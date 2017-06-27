@@ -118,7 +118,6 @@ public class PropertySheet extends JPanel
 				{
 					add(new JLabel(propertyName));
 					add(getEditorComponent(editor));
-					System.out.println(editor.getAsText());
 				}
 			}		
 		}
