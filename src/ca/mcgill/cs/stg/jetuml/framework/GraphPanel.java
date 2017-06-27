@@ -170,6 +170,7 @@ public class GraphPanel extends JPanel
 		repaint();
 		//----------
 		DescriptionToolBar.clearDescription();
+		DescriptionToolBar.hideDescription();
 		//----------
 	}
 	
@@ -566,11 +567,10 @@ public class GraphPanel extends JPanel
 					{
 						aSelectedElements.remove(element);
 					}
-					//---------
-					
-					DescriptionToolBar.clearDescription();;
-					
-					//---------
+					//----------
+					DescriptionToolBar.clearDescription();
+					DescriptionToolBar.hideDescription();
+					//----------
 				}
 				else if( !aSelectedElements.contains(element))
 				{
@@ -581,9 +581,7 @@ public class GraphPanel extends JPanel
 				aMoveTracker.startTrackingMove(aSelectedElements);
 				
 				//---------
-				
 				DescriptionToolBar.updateDescription(element);
-				
 				//---------
 			}
 			else // Nothing is selected
@@ -593,11 +591,10 @@ public class GraphPanel extends JPanel
 					aSelectedElements.clearSelection();
 				}
 				aDragMode = DragMode.DRAG_LASSO;
-				//---------
-				
-				DescriptionToolBar.clearDescription();;
-				
-				//---------
+				//----------
+				DescriptionToolBar.clearDescription();
+				DescriptionToolBar.hideDescription();
+				//----------
 			}
 
 		}
@@ -707,6 +704,10 @@ public class GraphPanel extends JPanel
 				{
 					setModified(true);
 					setSelection(newEdge);
+					//----------
+					DescriptionToolBar.clearDescription();
+					DescriptionToolBar.hideDescription();
+					//----------
 				}
 			}
 			else if(aDragMode == DragMode.DRAG_MOVE)

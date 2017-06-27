@@ -56,6 +56,7 @@ public class GraphFrame extends JInternalFrame
 		if (pGraph.getClass().equals(ClassDiagramGraph.class)) {
 			contentPane.add(DescriptionToolBar.getInstance(), BorderLayout.WEST);
 			DescriptionToolBar.setActive(true);
+			DescriptionToolBar.hideDescription();
 			} else {
 			contentPane.remove(DescriptionToolBar.getInstance());
 		}
