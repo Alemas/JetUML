@@ -32,6 +32,8 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.Rectangle2D;
@@ -63,6 +65,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
@@ -133,12 +136,10 @@ public class EditorFrame extends JFrame
 		aVersionResources = ResourceBundle.getBundle(appClassName + "Version");
 		aEditorResources = ResourceBundle.getBundle("ca.mcgill.cs.stg.jetuml.framework.EditorStrings");      
 		MenuFactory factory = new MenuFactory(aEditorResources);
-		
 		aRecentFiles.deserialize(Preferences.userNodeForPackage(UMLEditor.class).get("recent", "").trim());
-      
 		setTitle(aAppResources.getString("app.name"));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-  
+		this.addMouseWheelListener(new ActionZoomWheel(new ActionZoomIn(this), new ActionZoomOut(this)));
 		int screenWidth = (int)screenSize.getWidth();
 		int screenHeight = (int)screenSize.getHeight();
 
@@ -308,9 +309,8 @@ public class EditorFrame extends JFrame
      	viewMenu.setEnabled(!noCurrentGraphFrame());
 
      	viewMenu.add(pFactory.createMenuItem("view.zoom_out", new ActionZoomOut(this)));
-
+     	
      	viewMenu.add(pFactory.createMenuItem("view.zoom_in", new ActionZoomIn(this)));
-      
      	final JCheckBoxMenuItem hideGridItem  = (JCheckBoxMenuItem) pFactory.createCheckBoxMenuItem("view.hide_grid", new ActionListener()
      	{
             public void actionPerformed(ActionEvent pEvent)
