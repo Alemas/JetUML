@@ -107,7 +107,7 @@ public class DescriptionToolBar extends JPanel {
 		textPaneName.setText(description.get("Name"));
 		textPaneAttributes.setText(description.get("Attributes"));
 		textPaneMethods.setText(description.get("Methods"));
-		setEditableTextPanes(true);
+		setEditableTextPanes(false);
 	}
 	
 	public static void hideDescription() {

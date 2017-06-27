@@ -29,6 +29,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
+import ca.mcgill.cs.stg.jetuml.diagrams.ClassDiagramGraph;
 import ca.mcgill.cs.stg.jetuml.graph.Graph;
 
 /**
@@ -52,7 +53,11 @@ public class GraphFrame extends JInternalFrame
 		
 		//----------
 		
-		contentPane.add(DescriptionToolBar.getInstance(), BorderLayout.WEST);		
+		if (pGraph.getClass().equals(ClassDiagramGraph.class)) {
+			contentPane.add(DescriptionToolBar.getInstance(), BorderLayout.WEST);		
+		} else {
+			contentPane.remove(DescriptionToolBar.getInstance());
+		}
 		
 		//----------
 		
