@@ -160,6 +160,9 @@ public class PropertyChangeTracker
 				}
 				
 			}
+			//----------
+			DescriptionToolBar.updateDescription(aEdited);
+			//----------
 			return command;
 		}
 		catch(IntrospectionException | IllegalArgumentException e) 
