@@ -76,21 +76,16 @@ public class DescriptionToolBar extends JPanel {
 		descriptionPanel.add(stp, BorderLayout.WEST);
 	}
 	
-	private static void addTextPane(JTextPane textPane) {
-		
-	}
-	
 	public static DescriptionToolBar getInstance() {
 		if (instance == null) {
 			instance = new DescriptionToolBar();
-			
 			instance.add(descriptionPanel);
 		}
 		return instance;
 	}
 	
-	public static void udpateDescription(GraphElement element) {
-		
+	public static void updateDescription(GraphElement element) {
+		textPaneAttributes.setText(element.toString());
 	}
 	
 	public static void hideDescription() {
@@ -101,7 +96,9 @@ public class DescriptionToolBar extends JPanel {
 	}
 	
 	public static void clearDescription() {
-		
+		textPaneName.setText("");
+		textPaneAttributes.setText("");
+		textPaneMethods.setText("");
 	}
 	
 	

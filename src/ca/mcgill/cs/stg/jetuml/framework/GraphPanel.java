@@ -570,6 +570,12 @@ public class GraphPanel extends JPanel
 				}
 				aDragMode = DragMode.DRAG_MOVE;
 				aMoveTracker.startTrackingMove(aSelectedElements);
+				
+				//---------
+				
+				DescriptionToolBar.updateDescription(element);
+				
+				//---------
 			}
 			else // Nothing is selected
 			{
