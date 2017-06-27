@@ -117,7 +117,7 @@ public class PropertySheet extends JPanel
 				if(editor != null && !propertyName.equals(INVISIBLE_PROPERTY_MARKER))
 				{
 					add(new JLabel(propertyName));
-					add(getEditorComponent(editor));
+//					add(getEditorComponent(editor));
 				}
 			}		
 		}

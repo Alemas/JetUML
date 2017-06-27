@@ -563,6 +563,11 @@ public class GraphPanel extends JPanel
 					{
 						aSelectedElements.remove(element);
 					}
+					//---------
+					
+					DescriptionToolBar.clearDescription();;
+					
+					//---------
 				}
 				else if( !aSelectedElements.contains(element))
 				{
@@ -585,7 +590,13 @@ public class GraphPanel extends JPanel
 					aSelectedElements.clearSelection();
 				}
 				aDragMode = DragMode.DRAG_LASSO;
+				//---------
+				
+				DescriptionToolBar.clearDescription();;
+				
+				//---------
 			}
+
 		}
 		
 		private void handleDoubleClick(MouseEvent pEvent)

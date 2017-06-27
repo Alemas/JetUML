@@ -53,6 +53,8 @@ public class DescriptionToolBar extends JPanel {
 		addVerticalSpacing(SPACING);
 		addTextPane(textPaneMethods, new Dimension(200, 300));
 		
+		setEditableTextPanes(false);
+		
 	}
 	
 	private static void setFontSize(JLabel lbl, int fontSize) {
@@ -76,6 +78,12 @@ public class DescriptionToolBar extends JPanel {
 		descriptionPanel.add(stp, BorderLayout.WEST);
 	}
 	
+	private static void setEditableTextPanes(boolean editable) {
+		textPaneName.setEditable(editable);
+		textPaneAttributes.setEditable(editable);
+		textPaneMethods.setEditable(editable);
+	}
+	
 	public static DescriptionToolBar getInstance() {
 		if (instance == null) {
 			instance = new DescriptionToolBar();
@@ -86,6 +94,7 @@ public class DescriptionToolBar extends JPanel {
 	
 	public static void updateDescription(GraphElement element) {
 		textPaneAttributes.setText(element.toString());
+		setEditableTextPanes(true);
 	}
 	
 	public static void hideDescription() {
@@ -99,6 +108,7 @@ public class DescriptionToolBar extends JPanel {
 		textPaneName.setText("");
 		textPaneAttributes.setText("");
 		textPaneMethods.setText("");
+		setEditableTextPanes(false);
 	}
 	
 	
